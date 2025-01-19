@@ -104,9 +104,9 @@ async def test_researcher_list_type(array_extraction_schema: Dict[str, Any]) -> 
     nvidia_present = any(
         provider["name"].lower().strip() == "nvidia" for provider in info["providers"]
     )
-    assert (
-        nvidia_present
-    ), "NVIDIA should be among the top 5 chip providers for LLM training"
+    assert nvidia_present, (
+        "NVIDIA should be among the top 5 chip providers for LLM training"
+    )
 
     # Validate structure of each provider
     for provider in info["providers"]:

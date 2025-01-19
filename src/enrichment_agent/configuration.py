@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass, field, fields
-from typing import Annotated, Optional, Any
+from typing import Annotated, Any, Optional
 
 from langchain_core.runnables import RunnableConfig, ensure_config
 
@@ -37,7 +37,7 @@ class Configuration:
 
     @classmethod
     def from_runnable_config(
-            cls, config: Optional[RunnableConfig] = None
+        cls, config: Optional[RunnableConfig] = None
     ) -> Configuration:
         """Create a Configuration instance from a RunnableConfig."""
         configurable = (

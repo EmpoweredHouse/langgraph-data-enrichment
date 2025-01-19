@@ -6,12 +6,12 @@ Users can edit and extend these tools as needed.
 """
 
 from typing import Any, Optional, cast
-from typing_extensions import Annotated
 
 from langchain_community.document_loaders import WikipediaLoader
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import InjectedToolArg
+from typing_extensions import Annotated
 
 from enrichment_agent.configuration import Configuration
 
@@ -39,7 +39,9 @@ async def search_wikipedia(
     This function queries the Wikipedia to fetch comprehensive, accurate, and trusted results
     """
     configuration = Configuration.from_runnable_config(config)
-    wrapped = WikipediaLoader(query=query, load_max_docs=configuration.max_wikipedia_search_results)
+    wrapped = WikipediaLoader(
+        query=query, load_max_docs=configuration.max_wikipedia_search_results
+    )
     result = await wrapped.aload()
 
     return cast(list[dict[str, Any]], result)
