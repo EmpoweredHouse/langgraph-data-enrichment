@@ -76,7 +76,7 @@ class ResearchGraphState:
     max_analysts: int
     """Number of analysts"""
 
-    human_analyst_feedback: str
+    human_analyst_feedback: str = ""
     """Human feedback"""
 
     analysts: List[Analyst]
